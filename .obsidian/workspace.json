@@ -25,12 +25,14 @@
             "id": "757230de0c8e383f",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Introductory/AWS Exams Visual.md"
+                "file": "Introductory/AWS Accounts.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "AWS Exams Visual"
+              "icon": "lucide-file",
+              "title": "AWS Accounts"
             }
           }
         ],
@@ -179,8 +181,11 @@
   },
   "active": "757230de0c8e383f",
   "lastOpenFiles": [
+    "CleanShot 2025-01-09 at 09.15.05@2x 1.png",
     "Introductory/AWS Exams.md",
     "Introductory/AWS Exams Visual.md",
+    "CleanShot 2025-01-09 at 09.15.05@2x.png",
+    "Introductory/AWS Accounts.md",
     "README.md",
     "Introductory",
     "Excalidraw/Excalidraw Example.md",

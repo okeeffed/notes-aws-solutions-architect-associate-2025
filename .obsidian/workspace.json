@@ -13,26 +13,24 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Introductory/AWS Exams.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "AWS Exams"
             }
           },
           {
-            "id": "d48a95c4a5238042",
+            "id": "757230de0c8e383f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
+                "file": "Introductory/AWS Exams Visual.md"
               },
-              "icon": "lucide-file",
-              "title": "README"
+              "icon": "excalidraw-icon",
+              "title": "AWS Exams Visual"
             }
           }
         ],
@@ -92,7 +90,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 216.5
   },
   "right": {
     "id": "f2fb19ba81bb457a",
@@ -179,11 +177,14 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "d48a95c4a5238042",
+  "active": "757230de0c8e383f",
   "lastOpenFiles": [
+    "Introductory/AWS Exams.md",
+    "Introductory/AWS Exams Visual.md",
+    "README.md",
+    "Introductory",
     "Excalidraw/Excalidraw Example.md",
     "Excalidraw/Drawing 2025-01-09 08.39.33.excalidraw.md",
-    "README.md",
     "Excalidraw",
     "Welcome.md",
     "create a link.md"

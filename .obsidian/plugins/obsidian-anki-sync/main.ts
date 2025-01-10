@@ -54,20 +54,25 @@ export default class AnkiSyncPlugin extends Plugin {
     this.addCommand({
       id: "sync-current-file-to-anki",
       name: "Sync current file to Anki",
-      hotkeys: [],
+      hotkeys: [
+        {
+          modifiers: ["Mod"],
+          key: "a",
+        },
+      ],
       callback: () => this.syncCurrentFile(),
     });
 
     // Watch for file changes
-    this.registerEvent(
-      this.app.vault.on("modify", (file) => {
-        if (file instanceof TFile && file.extension === "md") {
-          this.handleFileModification(file);
-        }
-      }),
-    );
+    // NOTE: This doesn't have a save event so omitting until I figure it out
+    // this.registerEvent(
+    //   this.app.vault.on("modify", (file) => {
+    //     if (file instanceof TFile && file.extension === "md") {
+    //       this.handleFileModification(file);
+    //     }
+    //   }),
+    // );
 
-    // Add settings tab
     this.addSettingTab(new AnkiSyncSettingTab(this.app, this));
   }
 
@@ -124,6 +129,67 @@ export default class AnkiSyncPlugin extends Plugin {
     }
   }
 
+  async syncCardsToAnki(cards: AnkiCard[]) {
+    // First, sync all media files
+    for (const card of cards) {
+      await this.syncMediaFiles(card.mediaFiles);
+    }
+
+    // Then sync the cards
+    for (const card of cards) {
+      if (card.noteId) {
+        await this.updateNoteInAnki(card);
+      } else {
+        await this.addNoteToAnki(card);
+      }
+    }
+  }
+
+  async findExistingNoteId(card: AnkiCard): Promise<number | null> {
+    const response = await this.invokeAnkiConnect("findNotes", {
+      query: `deck:"${card.deck}" "front:${card.front}"`,
+    });
+
+    if (response.length > 0) {
+      return response[0];
+    }
+    return null;
+  }
+
+  async updateNoteInAnki(card: AnkiCard) {
+    await this.invokeAnkiConnect("updateNoteFields", {
+      note: {
+        id: card.noteId,
+        fields: {
+          Front: card.front,
+          Back: card.back,
+        },
+      },
+    });
+  }
+
+  async invokeAnkiConnect(action: string, params: any = {}) {
+    const response = await fetch(this.settings.ankiConnectUrl, {
+      method: "POST",
+      body: JSON.stringify({
+        action,
+        version: 6,
+        params,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`AnkiConnect ${action} failed`);
+    }
+
+    const responseData = await response.json();
+    if (responseData.error) {
+      throw new Error(responseData.error);
+    }
+
+    return responseData.result;
+  }
+
   async parseMarkdownForCards(
     content: string,
     file: TFile,
@@ -139,11 +205,25 @@ export default class AnkiSyncPlugin extends Plugin {
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
 
-      // Check for deck property - now handles nested decks correctly
+      // Check for deck property with proper nested deck handling
       if (line.startsWith("cards-deck:")) {
-        currentDeck = line.split(":")[1].trim();
+        currentDeck = line.substring("cards-deck:".length).trim();
         // Remove any quotes if present
         currentDeck = currentDeck.replace(/^["'](.+)["']$/, "$1");
+        // Ensure proper deck name format
+        currentDeck = this.sanitizeDeckName(currentDeck);
+        continue;
+      }
+
+      // Check for media files in the line before checking for card heading
+      const mediaMatches = line.match(/!\[\[(.*?)\]\]/g);
+      if (mediaMatches && isCollectingBack) {
+        for (const match of mediaMatches) {
+          const fileName = match.slice(3, -2).split("|")[0].trim(); // Handle aliases
+          mediaFiles.push(fileName);
+          // Don't replace the markdown yet - we'll do it during formatting
+          backContent += line + "\n";
+        }
         continue;
       }
 
@@ -169,7 +249,7 @@ export default class AnkiSyncPlugin extends Plugin {
       }
 
       // If we're collecting back content and hit a new heading, stop collecting
-      if (isCollectingBack && line.startsWith("#")) {
+      if (isCollectingBack && line.startsWith("#") && !line.includes("#card")) {
         isCollectingBack = false;
         const formattedCard = await this.formatCardContent({
           front: frontContent.trim(),
@@ -211,6 +291,14 @@ export default class AnkiSyncPlugin extends Plugin {
     return cards;
   }
 
+  sanitizeDeckName(deckName: string): string {
+    // Remove extra whitespace around :: separators
+    return deckName
+      .split("::")
+      .map((part) => part.trim())
+      .join("::");
+  }
+
   async formatCardContent(card: AnkiCard): Promise<AnkiCard> {
     // Create a temporary div for rendering
     const tempDiv = createDiv();
@@ -218,72 +306,80 @@ export default class AnkiSyncPlugin extends Plugin {
     document.body.appendChild(tempDiv);
 
     try {
-      // Format the back content
-      await MarkdownRenderer.renderMarkdown(card.back, tempDiv, "", this);
+      // First, sync media files and get their proper Anki names
+      const mediaMap = await this.syncMediaFiles(card.mediaFiles);
 
-      // Process the rendered HTML
-      let html = tempDiv.innerHTML;
+      // Process media files before rendering markdown
+      let processedContent = card.back;
+      for (const [origName, ankiName] of Object.entries(mediaMap)) {
+        // Replace the Obsidian media syntax with HTML
+        const mediaPattern = new RegExp(
+          `!\\[\\[${origName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(\\|[^\\]]*)?\\]\\]`,
+          "g",
+        );
+        processedContent = processedContent.replace(
+          mediaPattern,
+          `<img src="${ankiName}" style="max-width: 800px; display: block; margin: 10px auto;">`,
+        );
+      }
 
-      // Handle image formatting
-      html = html.replace(
-        /<img([^>]*)>/g,
-        '<div style="text-align: center;"><img$1 style="max-width: 400px; height: auto;"></div>',
+      // Render the processed markdown
+      await MarkdownRenderer.renderMarkdown(
+        processedContent,
+        tempDiv,
+        "",
+        this,
       );
 
-      // Replace relative image paths with just the filename for Anki
-      html = html.replace(
-        /src="([^"]+)"/g,
-        (match, src) => `src="${src.split("/").pop()}"`,
-      );
-
-      // Add some basic CSS for better formatting
-      html = `
+      // Add styling
+      let html = `
                 <style>
                     .card-content {
                         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-                        line-height: 1.5;
+                        line-height: 1.6;
                         padding: 20px;
+                        max-width: 800px;
+                        margin: 0 auto;
                     }
-                    code {
+                    .card-content img {
+                        max-width: 400px;
+                        height: auto;
+                        margin: 10px auto;
+                        display: block;
+                    }
+                    .card-content p {
+                        margin: 1em 0;
+                    }
+                    .card-content code {
                         background-color: #f0f0f0;
                         padding: 2px 4px;
                         border-radius: 3px;
                         font-family: monospace;
                     }
-                    pre {
+                    .card-content pre {
                         background-color: #f0f0f0;
                         padding: 10px;
                         border-radius: 5px;
                         overflow-x: auto;
                     }
-                    ul, ol {
+                    .card-content ul, .card-content ol {
                         padding-left: 20px;
+                        margin: 1em 0;
                     }
-                    blockquote {
+                    .card-content li {
+                        margin: 0.5em 0;
+                    }
+                    .card-content blockquote {
                         border-left: 3px solid #ddd;
-                        margin: 0;
+                        margin: 1em 0;
                         padding-left: 1em;
                         color: #666;
                     }
-                    table {
-                        border-collapse: collapse;
-                        width: 100%;
-                        margin: 10px 0;
-                    }
-                    th, td {
-                        border: 1px solid #ddd;
-                        padding: 8px;
-                        text-align: left;
-                    }
-                    th {
-                        background-color: #f5f5f5;
-                    }
                 </style>
                 <div class="card-content">
-                    ${html}
+                    ${tempDiv.innerHTML}
                 </div>`;
 
-      // Update the card with formatted content
       return {
         ...card,
         back: html,
@@ -294,23 +390,9 @@ export default class AnkiSyncPlugin extends Plugin {
     }
   }
 
-  async syncCardsToAnki(cards: AnkiCard[]) {
-    // First, sync all media files
-    for (const card of cards) {
-      await this.syncMediaFiles(card.mediaFiles);
-    }
+  async syncMediaFiles(mediaFiles: string[]): Promise<Record<string, string>> {
+    const mediaMap: Record<string, string> = {};
 
-    // Then sync the cards
-    for (const card of cards) {
-      if (card.noteId) {
-        await this.updateNoteInAnki(card);
-      } else {
-        await this.addNoteToAnki(card);
-      }
-    }
-  }
-
-  async syncMediaFiles(mediaFiles: string[]) {
     for (const fileName of mediaFiles) {
       try {
         const file = this.app.vault.getAbstractFileByPath(fileName);
@@ -318,15 +400,39 @@ export default class AnkiSyncPlugin extends Plugin {
           const arrayBuffer = await this.app.vault.readBinary(file);
           const base64 = this.arrayBufferToBase64(arrayBuffer);
 
+          // Ensure unique filename for Anki
+          const ankiFileName = this.getUniqueAnkiFileName(fileName);
+
+          // Store the file in Anki
           await this.invokeAnkiConnect("storeMediaFile", {
-            filename: fileName,
+            filename: ankiFileName,
             data: base64,
           });
+
+          // Map original filename to Anki filename
+          mediaMap[fileName] = ankiFileName;
         }
       } catch (error) {
         console.error(`Failed to sync media file ${fileName}:`, error);
+        new Notice(`Failed to sync media file ${fileName}`);
       }
     }
+
+    return mediaMap;
+  }
+
+  getUniqueAnkiFileName(originalName: string): string {
+    // Get the base name without path
+    const baseName = originalName.split("/").pop() || originalName;
+
+    // Remove any special characters and spaces from filename
+    const sanitizedName = baseName.replace(/[^a-zA-Z0-9.]/g, "_").toLowerCase();
+
+    // Add timestamp to ensure uniqueness if needed
+    // const timestamp = Date.now();
+    // return `${timestamp}_${sanitizedName}`;
+
+    return sanitizedName;
   }
 
   arrayBufferToBase64(buffer: ArrayBuffer): string {
@@ -338,66 +444,48 @@ export default class AnkiSyncPlugin extends Plugin {
     return window.btoa(binary);
   }
 
-  async findExistingNoteId(card: AnkiCard): Promise<number | null> {
-    const response = await this.invokeAnkiConnect("findNotes", {
-      query: `deck:"${card.deck}" "front:${card.front}"`,
-    });
-
-    if (response.length > 0) {
-      return response[0];
-    }
-    return null;
-  }
-
   async addNoteToAnki(card: AnkiCard) {
-    await this.invokeAnkiConnect("addNote", {
-      note: {
-        deckName: card.deck, // This will now work with nested decks like "AWS Exams::Solutions Architect::Associate"
-        modelName: "Basic",
-        fields: {
-          Front: card.front,
-          Back: card.back,
+    // First ensure the deck exists
+    try {
+      await this.createDeckIfNeeded(card.deck);
+
+      // Add note with proper HTML formatting
+      await this.invokeAnkiConnect("addNote", {
+        note: {
+          deckName: card.deck,
+          modelName: "Basic",
+          fields: {
+            Front: card.front,
+            Back: card.back,
+          },
+          options: {
+            allowDuplicate: false,
+          },
+          tags: ["obsidian"],
         },
-        options: {
-          allowDuplicate: false,
-        },
-        tags: ["obsidian"],
-      },
-    });
+      });
+    } catch (error) {
+      console.error("Failed to add note:", error);
+      throw error;
+    }
   }
 
-  async updateNoteInAnki(card: AnkiCard) {
-    await this.invokeAnkiConnect("updateNoteFields", {
-      note: {
-        id: card.noteId,
-        fields: {
-          Front: card.front,
-          Back: card.back,
-        },
-      },
-    });
-  }
+  async createDeckIfNeeded(deckName: string) {
+    try {
+      // Get all decks
+      const decks = await this.invokeAnkiConnect("deckNames", {});
 
-  async invokeAnkiConnect(action: string, params: any = {}) {
-    const response = await fetch(this.settings.ankiConnectUrl, {
-      method: "POST",
-      body: JSON.stringify({
-        action,
-        version: 6,
-        params,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`AnkiConnect ${action} failed`);
+      // If deck doesn't exist, create it
+      if (!decks.includes(deckName)) {
+        await this.invokeAnkiConnect("createDeck", {
+          deck: deckName,
+        });
+        console.log(`Created deck: ${deckName}`);
+      }
+    } catch (error) {
+      console.error("Failed to create deck:", error);
+      throw error;
     }
-
-    const responseData = await response.json();
-    if (responseData.error) {
-      throw new Error(responseData.error);
-    }
-
-    return responseData.result;
   }
 }
 

@@ -9,9 +9,15 @@ cards-deck: AWS Exams::Solutions Architect::Associate::Organizations
 - It works by taking a single AWS account to create a AWS organisation.
 	- You USE the account to create the organisation.
 	- It's called the **management account** (previously **master account**, also known as **payer account**).
+
+### What is a management account? #card
+
 - Using a **management account**, you can invite other accounts into the organisation.
 	- When joining an **organisation**, the accounts become a **member account**.
 	- Individual billing methods are removed from those accounts and moved to the **management account**
+
+### What is a member account and role switching? #card 
+
 - If you create an account within the organization, it becomes a **member account** by default.
 - If using federation, we can use "role switch" in order to switch into different accounts within an **organization**.
 	- If you invite an account into the organization, this needs to be done manually.

@@ -11,7 +11,8 @@ CloudWatch collects and managers operational data.
 - **Metrics** - AWS Products, Apps, on-premises. Some of this will be out-of-the-box, while others may require the CloudWatch agent.
 - **CloudWatch Logs** 
 - **CloudWatch Events** - This can generates events like services and schedules.
-![[cloud-watch-metrics.png]]
+
+![[imgs/cloud-watch-metrics.png]]
 
 ### What are CloudWatch Namespaces? #card
 

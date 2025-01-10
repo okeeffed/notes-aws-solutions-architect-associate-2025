@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CloudWatch/CloudWatch Notes.md",
+                "file": "Organizations/AWS Organizations Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CloudWatch Notes"
+              "title": "AWS Organizations Notes"
             }
           },
           {
@@ -197,8 +197,8 @@
   },
   "active": "757230de0c8e383f",
   "lastOpenFiles": [
-    "Organizations/AWS Organizations Notes.md",
     "CloudWatch/CloudWatch Notes.md",
+    "Organizations/AWS Organizations Notes.md",
     "Introductory/AWS Accounts.md",
     "CloudWatch/CloudWatch Board.md",
     "Organizations",

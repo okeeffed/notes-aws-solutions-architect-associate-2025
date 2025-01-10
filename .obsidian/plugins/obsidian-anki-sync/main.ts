@@ -395,13 +395,15 @@ export default class AnkiSyncPlugin extends Plugin {
 
     for (const fileName of mediaFiles) {
       try {
-        const file = this.app.vault.getAbstractFileByPath(fileName);
-        if (file instanceof TFile) {
-          const arrayBuffer = await this.app.vault.readBinary(file);
+        // Resolve the file path
+        const resolvedFile = this.resolveFileByName(fileName);
+
+        if (resolvedFile instanceof TFile) {
+          const arrayBuffer = await this.app.vault.readBinary(resolvedFile);
           const base64 = this.arrayBufferToBase64(arrayBuffer);
 
           // Ensure unique filename for Anki
-          const ankiFileName = this.getUniqueAnkiFileName(fileName);
+          const ankiFileName = this.getUniqueAnkiFileName(resolvedFile.name);
 
           // Store the file in Anki
           await this.invokeAnkiConnect("storeMediaFile", {
@@ -411,6 +413,8 @@ export default class AnkiSyncPlugin extends Plugin {
 
           // Map original filename to Anki filename
           mediaMap[fileName] = ankiFileName;
+        } else {
+          throw new Error(`File not found for ${fileName}`);
         }
       } catch (error) {
         console.error(`Failed to sync media file ${fileName}:`, error);
@@ -419,6 +423,30 @@ export default class AnkiSyncPlugin extends Plugin {
     }
 
     return mediaMap;
+  }
+
+  /**
+   * Resolves a file by name within the Obsidian vault.
+   * If multiple matches are found, throws an error.
+   * @param fileName The name of the file to resolve.
+   */
+  private resolveFileByName(fileName: string): TFile | null {
+    const allFiles = this.app.vault.getFiles();
+    const matchingFiles = allFiles.filter((file) => file.name === fileName);
+
+    if (matchingFiles.length === 0) {
+      throw new Error(`No file found with the name ${fileName}`);
+    }
+
+    if (matchingFiles.length > 1) {
+      throw new Error(
+        `Multiple files found with the name ${fileName}: ${matchingFiles
+          .map((file) => file.path)
+          .join(", ")}`,
+      );
+    }
+
+    return matchingFiles[0];
   }
 
   getUniqueAnkiFileName(originalName: string): string {

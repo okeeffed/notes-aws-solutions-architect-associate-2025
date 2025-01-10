@@ -29,6 +29,10 @@ cards-deck: AWS Exams::Solutions Architect::Associate::Organizations
 - The **organization root** is a container that contains member accounts, and can also contain other containers call **organizational units** (OU).
 	- The **organization root** is just the root of the tree.
 
+## How can you create an organisational unit? #card 
+
+![[creating-an-ou.png]]
+
 ## What are Service Control Policies (SCP)? #card 
 
 - A feature of **AWS Organizations**.

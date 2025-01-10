@@ -47,6 +47,9 @@ flowchart LR
 To learn more about the Excalidraw plugin, definitely check this out [https://youtu.be/P_Q6avJGoWI](https://youtu.be/P_Q6avJGoWI)
 
 Within Obsidian, you can see an example at [[Excalidraw Example]].
+
+Most folders should have a top-level "... Board" to help indicate the Excalidraw board used.
+
 ## Future
 
 I will endeavour to add my own custom additions for quizzes and notes as I go. I will also likely build out some examples of configurations as TypeScript AWS CDK constructs where possible and where time permits. 

@@ -35,7 +35,7 @@ mXwHVa6s: https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-
 mH57pJEC: https://learn.cantrill.io/courses/1820301/lectures/41301641
 
 ## Embedded Files
-b85f4d318d05dc1dff5c0c1835c5d4037e8b8f88: [[CleanShot 2025-01-09 at 09.15.05@2x.png]]
+b85f4d318d05dc1dff5c0c1835c5d4037e8b8f88: [[aws-accounts-diagram.png]]
 
 %%
 ## Drawing

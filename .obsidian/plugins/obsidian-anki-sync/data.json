@@ -1,0 +1,8 @@
+{
+  "ankiConnectUrl": "http://localhost:8765",
+  "defaultDeck": "Default",
+  "lastSync": {
+    "Organizations/AWS Organizations Notes.md": 1736546319183,
+    "CloudWatch/CloudWatch Notes.md": 1736546926579
+  }
+}

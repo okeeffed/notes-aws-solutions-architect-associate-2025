@@ -7,4 +7,4 @@
 - Root users cannot be restricted, but identities can (through Identity and Access Management IAM). 
 - By default, all external identities are denied by default. Access needs to be provided.
 
-![[CleanShot 2025-01-09 at 09.15.05@2x 1.png]]
+![[aws-accounts-diagram-two.png]]

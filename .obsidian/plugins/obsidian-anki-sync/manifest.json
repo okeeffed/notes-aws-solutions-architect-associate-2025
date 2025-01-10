@@ -1,0 +1,9 @@
+{
+  "id": "obsidian-anki-simple-sync",
+  "name": "Obsidian Anki Simple Sync",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Sync Obsidian notes to Anki",
+  "author": "Dennis O'Keeffe",
+  "isDesktopOnly": true
+}

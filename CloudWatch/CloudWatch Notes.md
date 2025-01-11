@@ -2,9 +2,9 @@
 cards-deck: AWS Exams::Solutions Architect::Associate::CloudWatch
 ---
 
-## Raw Notes
+## What is CloudWatch?
 
-CloudWatch collects and managers operational data.
+CloudWatch is a service which collects and manages operational data.
 
 ### The three main jobs of CloudWatch? #card
 
@@ -12,7 +12,7 @@ CloudWatch collects and managers operational data.
 - **CloudWatch Logs** 
 - **CloudWatch Events** - This can generates events like services and schedules.
 
-![[imgs/cloud-watch-metrics.png]]
+![[cloud-watch-metrics.png]]
 
 ### What are CloudWatch Namespaces? #card
 
@@ -31,3 +31,25 @@ CloudWatch collects and managers operational data.
 - Alarms are based of metrics and can either be OK or in an "ALARM" state. 
 - In the ALARM state, we can take an action.
 
+### What are CloudWatch Logs? #card 
+
+- A **public service** available from AWS or on-prem.
+- **Store, monitor and access** logging data.
+- Can generate **metrics** based on logs - a **metric filter**.
+	- These can be used to create alarms.
+### How can we use CloudWatch Logs? #card 
+
+- Many built-in integrations with AWS services.
+	- Security for this provided through IAM.
+- For anything that does not use it out of the box, we can use the AWS CloudWatch Agent.
+
+### How are logs grouped? #card 
+
+- A **log source** is, as the name implies, any source.
+- **Log events** are individual events that come from a **log source**.
+- **Log streams** are a collection of log events from any given log source.
+	- This can change based on things such as new deployments, etc.
+- **Log groups** are the collection of **log streams**.
+- **Metric filters** create **metrics** which feeds into **alarms** from these events.
+
+![[cloudwatch-logs.png]]

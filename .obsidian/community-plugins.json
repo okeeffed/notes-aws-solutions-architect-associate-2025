@@ -1,5 +1,6 @@
 [
   "obsidian-git",
   "obsidian-excalidraw-plugin",
-  "obsidian-anki-simple-sync"
+  "obsidian-anki-simple-sync",
+  "obsidian-linter"
 ]

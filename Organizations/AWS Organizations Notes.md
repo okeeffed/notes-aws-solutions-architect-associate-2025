@@ -31,6 +31,9 @@ cards-deck: AWS Exams::Solutions Architect::Associate::Organizations
 
 ## How can you create an organisational unit? #card 
 
+1. From within AWS accounts, you can select the structure you want to add the **Organizational unit** to.
+2. Once that is complete, you can then move accounts within those OUs.
+
 ![[creating-an-ou.png]]
 
 ## What are Service Control Policies (SCP)? #card 
@@ -40,6 +43,12 @@ cards-deck: AWS Exams::Solutions Architect::Associate::Organizations
 	- The **management account** is **exempt** from service control policies. This also is a good take away that you shouldn't use AWS services within the **management account**.
 - SCPs limit what the account can do (including the root user), but they do not grant permissions. They just enable boundaries or what is or isn't allowed within accounts.
 - Explicit Deny **allows wins**.
+
+### How create I enable Service Control Policies? #card 
+
+You can configure it from within AWS Organisations and create the policy from there.
+
+![[org-scp-screen.png]]
 
 ## SCP example: Full AWS Access #card
 

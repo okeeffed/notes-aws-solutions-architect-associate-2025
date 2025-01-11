@@ -2,7 +2,13 @@
   "ankiConnectUrl": "http://localhost:8765",
   "defaultDeck": "Default",
   "lastSync": {
-    "Organizations/AWS Organizations Notes.md": 1736549184398,
-    "CloudWatch/CloudWatch Notes.md": 1736547971048
+    "Organizations/AWS Organizations Notes.md": 1736550569283,
+    "CloudWatch/CloudWatch Notes.md": 1736584639991,
+    "Practice Exams/Udemy Practice Exam 1.md": 1736628628969,
+    "Practice Exams/Cantrill IAM & Orgs Quiz.md": 1736584339468,
+    "CloudTrail/CloudTrail Notes.md": 1736584595528,
+    "Control Tower/Control Tower Notes.md": 1736584886981,
+    "Hybrid Environments and Migration/Border Gateway Protocol 101.md": 1736636121213,
+    "IPSEC VPN Fundamentals.md": 1736638318190
   }
 }

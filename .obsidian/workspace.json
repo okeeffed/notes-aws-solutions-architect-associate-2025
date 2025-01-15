@@ -27,7 +27,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CloudWatch/CloudWatch Notes.md",
+                "file": "IAM Accounts and Organizations/CloudWatch/CloudWatch Notes.md",
                 "mode": "source",
                 "source": false
               },
@@ -77,26 +77,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Study Plans/Sunday Jan 12th.md",
+                "file": "Study Plans/2025-01-12.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Sunday Jan 12th"
-            }
-          },
-          {
-            "id": "f88a22bb4c4b7632",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Hybrid Environments and Migration/Border Gateway Protocol 101.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Border Gateway Protocol 101"
+              "title": "2025-01-12"
             }
           },
           {
@@ -117,14 +103,12 @@
             "id": "69bb02255d8e1208",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Hybrid Environments and Migration/AWS Site-to-Site VPN.md",
-                "mode": "source",
-                "source": false
+                "file": "imgs/vpn-site-to-site-partial-ha.png"
               },
-              "icon": "lucide-file",
-              "title": "AWS Site-to-Site VPN"
+              "icon": "lucide-image",
+              "title": "vpn-site-to-site-partial-ha"
             }
           },
           {
@@ -133,12 +117,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CloudWatch/CloudWatch Notes.md",
+                "file": "EC2/Tutorials Dojo EC2 Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CloudWatch Notes"
+              "title": "Tutorials Dojo EC2 Notes"
             }
           }
         ],
@@ -287,46 +271,53 @@
       "obsidian-anki-simple-sync:Sync to Anki": false
     }
   },
-  "active": "baeda7f2d2df53c0",
+  "active": "921c3b99852cce01",
   "lastOpenFiles": [
-    "Hybrid Environments and Migration/IPSEC VPN Fundamentals.md",
-    "Hybrid Environments and Migration/AWS Site-to-Site VPN.md",
-    "imgs/vpn-types.png",
-    "imgs/ike-memory-cue.webp",
-    "imgs/ike-phase-one.png",
-    "imgs/ike-phase-2.png",
-    "imgs/ipsec-overview.png",
-    "Hybrid Environments and Migration/Border Gateway Protocol 101.md",
-    "imgs/bgp-visual.png",
-    "imgs/bgp-representation.webp",
-    "Study Plans/Sunday Jan 12th.md",
-    "Hybrid Environments and Migration",
-    "Practice Exams/Udemy Practice Exam 1.md",
-    "Study Plans",
-    "imgs/s3-comparison.png",
-    "Control Tower/Control Tower Notes.md",
-    "imgs/control-tower 1.png",
-    "CloudWatch/CloudWatch Notes.md",
-    "CloudTrail/CloudTrail Notes.md",
-    "imgs/enable-trail-for-all-accounts.png",
-    "Practice Exams/Cantrill IAM & Orgs Quiz.md",
-    "Control Tower",
-    "CloudTrail",
-    "Practice Exams",
-    "Organizations/AWS Organizations Notes.md",
+    "EC2/EC2 Basics.md",
+    "EC2/Tutorials Dojo EC2 Notes.md",
+    "Study Plans/2025-01-14.md",
+    "Untitled",
+    "Study Plans/2025-01-13.md",
+    "Virtual Private Cloud/Virtual Private Cloud Basics.md",
+    "EC2",
+    "imgs/custom-vpc-design.png",
+    "imgs/vpc-proposal.png",
+    "imgs/vpc-planning.png",
+    "Untitled.md",
+    "imgs/vpc-sizing-chart.png",
+    "imgs/example-ip-ranges-to-avoid.png",
+    "imgs/global-vpc-architecture.png",
+    "IAM Accounts and Organizations/Identity and Access Management (IAM).md",
+    "Virtual Private Cloud",
+    "imgs/when-to-use-iam-roles.png",
+    "imgs/iam-roles-policies.png",
+    "imgs/iam-roles.png",
+    "imgs/iam-groups.png",
+    "IAM Accounts and Organizations",
+    "Serverless and Application Services/AWS Kinesis.md",
+    "Serverless and Application Services/AWS Glue.md",
+    "Study Plans/2025-01-12.md",
     "README.md",
-    "Introductory/AWS Exams.md",
-    "Introductory/AWS Accounts.md",
-    "CloudWatch/CloudWatch Board.md",
-    "Organizations",
-    "imgs",
-    "CloudWatch",
-    "Introductory/AWS Exams Visual.md",
-    "Introductory",
-    "Excalidraw/Excalidraw Example.md",
-    "Excalidraw/Drawing 2025-01-09 08.39.33.excalidraw.md",
-    "Excalidraw",
-    "Welcome.md",
-    "create a link.md"
+    "Practice Exams/Udemy Practice Exam 2.md",
+    "Serverless and Application Services/AWS Cognito.md",
+    "Hybrid Environments and Migration/AWS DataSync.md",
+    "Serverless and Application Services",
+    "Practice Exams/Udemy Practice Exam 1.md",
+    "Exam/Exam techniques.md",
+    "Exam",
+    "Security, Deployment and Operations/AWS Secrets Manager.md",
+    "Hybrid Environments and Migration/AWS Transfer Family.md",
+    "Security, Deployment and Operations/AWS Macie.md",
+    "Security, Deployment and Operations/AWS GuardDuty.md",
+    "Security, Deployment and Operations/AWS Inspector.md",
+    "Security, Deployment and Operations/CloudHSM.md",
+    "Security, Deployment and Operations/AWS Shield.md",
+    "Security, Deployment and Operations/Firewalls.md",
+    "Security, Deployment and Operations/AWS Config.md",
+    "Security, Deployment and Operations",
+    "Hybrid Environments and Migration/AWS Transit Gateway.md",
+    "Hybrid Environments and Migration",
+    "Study Plans",
+    "IAM Accounts and Organizations/Control Tower"
   ]
 }

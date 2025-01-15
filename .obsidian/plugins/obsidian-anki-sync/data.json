@@ -9,6 +9,26 @@
     "CloudTrail/CloudTrail Notes.md": 1736584595528,
     "Control Tower/Control Tower Notes.md": 1736584886981,
     "Hybrid Environments and Migration/Border Gateway Protocol 101.md": 1736636121213,
-    "IPSEC VPN Fundamentals.md": 1736638318190
+    "IPSEC VPN Fundamentals.md": 1736638318190,
+    "Hybrid Environments and Migration/AWS Site-to-Site VPN.md": 1736640024966,
+    "Hybrid Environments and Migration/AWS Direct Connect (DX).md": 1736643461296,
+    "Hybrid Environments and Migration/AWS Transit Gateway.md": 1736644049425,
+    "Hybrid Environments and Migration/AWS Storage Gateway.md": 1736650315970,
+    "Hybrid Environments and Migration/AWS FSx.md": 1736652804455,
+    "Hybrid Environments and Migration/AWS Transfer Family.md": 1736654873565,
+    "Security, Deployment and Operations/Firewalls.md": 1736656513351,
+    "Security, Deployment and Operations/AWS Shield.md": 1736656988986,
+    "Security, Deployment and Operations/CloudHSM.md": 1736659079938,
+    "Security, Deployment and Operations/AWS Config.md": 1736659444749,
+    "Security, Deployment and Operations/AWS Macie.md": 1736660204183,
+    "Security, Deployment and Operations/AWS Inspector.md": 1736660533115,
+    "Security, Deployment and Operations/AWS GuardDuty.md": 1736660789364,
+    "Hybrid Environments and Migration/AWS DataSync.md": 1736675399738,
+    "Serverless and Application Services/AWS Cognito.md": 1736677190500,
+    "Serverless and Application Services/AWS Glue.md": 1736678126889,
+    "Serverless and Application Services/AWS Kinesis.md": 1736720512582,
+    "IAM Accounts and Organizations/Identity and Access Management (IAM).md": 1736755756926,
+    "Virtual Private Cloud/Virtual Private Cloud Basics.md": 1736762940202,
+    "EC2/Tutorials Dojo EC2 Notes.md": 1736891963171
   }
 }

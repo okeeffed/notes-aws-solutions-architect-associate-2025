@@ -77,56 +77,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Study Plans/2025-01-12.md",
+                "file": "EFS/Tutorials Dojo EFS Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-01-12"
+              "title": "Tutorials Dojo EFS Notes"
             }
           },
           {
             "id": "d4fbab3f9e4dc185",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Hybrid Environments and Migration/IPSEC VPN Fundamentals.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "IPSEC VPN Fundamentals"
-            }
-          },
-          {
-            "id": "69bb02255d8e1208",
-            "type": "leaf",
-            "state": {
               "type": "image",
               "state": {
-                "file": "imgs/vpn-site-to-site-partial-ha.png"
+                "file": "imgs/asg-process.png"
               },
               "icon": "lucide-image",
-              "title": "vpn-site-to-site-partial-ha"
-            }
-          },
-          {
-            "id": "921c3b99852cce01",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "EC2/Tutorials Dojo EC2 Notes.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Tutorials Dojo EC2 Notes"
+              "title": "asg-process"
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -157,7 +129,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#card",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -267,37 +239,42 @@
       "command-palette:Open command palette": false,
       "obsidian-git:Open Git source control": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
-      "flashcards-obsidian:Generate flashcards": false,
       "obsidian-anki-simple-sync:Sync to Anki": false
     }
   },
-  "active": "921c3b99852cce01",
+  "active": "251a1373e78561c1",
   "lastOpenFiles": [
-    "EC2/EC2 Basics.md",
+    "Storage Gateway/Tutorials Dojo Storage Gateway Notes.md",
+    "EFS/Tutorials Dojo EFS Notes.md",
+    "EFS",
+    "ECS/Tutorials Dojo ECS Notes.md",
+    "Storage Gateway",
+    "imgs/ecs-task-spread.png",
+    "imgs/ecs-task-random.png",
+    "imgs/ecs-task-binpack.png",
     "EC2/Tutorials Dojo EC2 Notes.md",
-    "Study Plans/2025-01-14.md",
-    "Untitled",
-    "Study Plans/2025-01-13.md",
     "Virtual Private Cloud/Virtual Private Cloud Basics.md",
+    "imgs/none-network-mode.png",
+    "imgs/aws-vpc-mode.png",
+    "imgs/host-network-mode.png",
+    "imgs/bridge-network-mode.png",
+    "ECS",
+    "Study Plans/2025-01-12.md",
+    "imgs/asg-process.png",
+    "Hybrid Environments and Migration/IPSEC VPN Fundamentals.md",
+    "imgs/security-group.png",
+    "imgs/nacl-inbound.png",
+    "README.md",
+    "EC2/EC2 Basics.md",
+    "Study Plans/2025-01-14.md",
+    "Study Plans/2025-01-13.md",
     "EC2",
-    "imgs/custom-vpc-design.png",
-    "imgs/vpc-proposal.png",
-    "imgs/vpc-planning.png",
     "Untitled.md",
-    "imgs/vpc-sizing-chart.png",
-    "imgs/example-ip-ranges-to-avoid.png",
-    "imgs/global-vpc-architecture.png",
     "IAM Accounts and Organizations/Identity and Access Management (IAM).md",
     "Virtual Private Cloud",
-    "imgs/when-to-use-iam-roles.png",
-    "imgs/iam-roles-policies.png",
-    "imgs/iam-roles.png",
-    "imgs/iam-groups.png",
     "IAM Accounts and Organizations",
     "Serverless and Application Services/AWS Kinesis.md",
     "Serverless and Application Services/AWS Glue.md",
-    "Study Plans/2025-01-12.md",
-    "README.md",
     "Practice Exams/Udemy Practice Exam 2.md",
     "Serverless and Application Services/AWS Cognito.md",
     "Hybrid Environments and Migration/AWS DataSync.md",
@@ -311,13 +288,7 @@
     "Security, Deployment and Operations/AWS GuardDuty.md",
     "Security, Deployment and Operations/AWS Inspector.md",
     "Security, Deployment and Operations/CloudHSM.md",
-    "Security, Deployment and Operations/AWS Shield.md",
-    "Security, Deployment and Operations/Firewalls.md",
-    "Security, Deployment and Operations/AWS Config.md",
     "Security, Deployment and Operations",
-    "Hybrid Environments and Migration/AWS Transit Gateway.md",
-    "Hybrid Environments and Migration",
-    "Study Plans",
-    "IAM Accounts and Organizations/Control Tower"
+    "Hybrid Environments and Migration"
   ]
 }

@@ -28,7 +28,10 @@
     "Serverless and Application Services/AWS Glue.md": 1736678126889,
     "Serverless and Application Services/AWS Kinesis.md": 1736720512582,
     "IAM Accounts and Organizations/Identity and Access Management (IAM).md": 1736755756926,
-    "Virtual Private Cloud/Virtual Private Cloud Basics.md": 1736762940202,
-    "EC2/Tutorials Dojo EC2 Notes.md": 1736891963171
+    "Virtual Private Cloud/Virtual Private Cloud Basics.md": 1737158213622,
+    "EC2/Tutorials Dojo EC2 Notes.md": 1737184737795,
+    "ECS/Tutorials Dojo ECS Notes.md": 1737255328753,
+    "Storage Gateway/Tutorials Dojo Storage Gateway Notes.md": 1737256195554,
+    "EFS/Tutorials Dojo EFS Notes.md": 1737710907698
   }
 }

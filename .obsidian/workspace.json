@@ -86,19 +86,35 @@
             }
           },
           {
-            "id": "d4fbab3f9e4dc185",
+            "id": "bf8e4877706f471e",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "imgs/asg-process.png"
+                "file": "Cheat Sheets/EventBridge Cheat Sheet.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "asg-process"
+              "icon": "lucide-file",
+              "title": "EventBridge Cheat Sheet"
+            }
+          },
+          {
+            "id": "e18399d135043127",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cheat Sheets/Amazon Managed Workflows for Apache Airflow (MWAA) Cheat Sheet.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Amazon Managed Workflows for Apache Airflow (MWAA) Cheat Sheet"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -117,7 +133,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -154,7 +171,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 465.5
   },
   "right": {
     "id": "f2fb19ba81bb457a",
@@ -242,53 +259,53 @@
       "obsidian-anki-simple-sync:Sync to Anki": false
     }
   },
-  "active": "251a1373e78561c1",
+  "active": "baeda7f2d2df53c0",
   "lastOpenFiles": [
-    "Storage Gateway/Tutorials Dojo Storage Gateway Notes.md",
-    "EFS/Tutorials Dojo EFS Notes.md",
+    "Untitled.md",
+    "Cheat Sheets/EventBridge Cheat Sheet.md",
+    "Cheat Sheets/Systems Manager Cheat Sheet.md",
+    "Cheat Sheets/Glue Cheat Sheet.md",
+    "Cheat Sheets/SAM.md",
+    "Cheat Sheets/Fargate.md",
+    "Cheat Sheets/Elastic Beanstalk.md",
+    "Cheat Sheets/Lightsail Cheat Sheet.md",
+    "Cheat Sheets/Batch Cheat Sheet.md",
+    "Cheat Sheets/Billing Overview Cheat Sheet.md",
+    "Cheat Sheets/Bedrock Cheat Sheet.md",
+    "Cheat Sheets/FSx Cheat Sheet.md",
+    "Cheat Sheets/Cognito Cheat Sheet.md",
+    "Cheat Sheets/Firewall Manager.md",
+    "Cheat Sheets/Network Firewall.md",
+    "Cheat Sheets/Security Hub.md",
+    "Cheat Sheets/Resource Access Manager (RAM).md",
+    "Cheat Sheets/Pinpoint Cheat Sheet.md",
+    "Cheat Sheets/ECR Cheat Sheet.md",
+    "Cheat Sheets/ECS Cheat Sheet.md",
+    "Cheat Sheets/Wavelength Cheat Sheet.md",
+    "Cheat Sheets/Proton Cheat Sheet.md",
+    "Cheat Sheets/ParallelCluster Cheat Sheet.md",
+    "Cheat Sheets/Elastic Fabric Adapter Cheat Sheet.md",
+    "Cheat Sheets/Detective Cheat Sheet.md",
+    "Cheat Sheets/Billing Conductor Cheat Sheet.md",
+    "Cheat Sheets",
+    "Practice Exams/Untitled",
+    "imgs/asg-process.png",
+    "Concepts",
     "EFS",
-    "ECS/Tutorials Dojo ECS Notes.md",
     "Storage Gateway",
     "imgs/ecs-task-spread.png",
     "imgs/ecs-task-random.png",
     "imgs/ecs-task-binpack.png",
-    "EC2/Tutorials Dojo EC2 Notes.md",
-    "Virtual Private Cloud/Virtual Private Cloud Basics.md",
     "imgs/none-network-mode.png",
     "imgs/aws-vpc-mode.png",
     "imgs/host-network-mode.png",
     "imgs/bridge-network-mode.png",
     "ECS",
-    "Study Plans/2025-01-12.md",
-    "imgs/asg-process.png",
-    "Hybrid Environments and Migration/IPSEC VPN Fundamentals.md",
     "imgs/security-group.png",
     "imgs/nacl-inbound.png",
-    "README.md",
-    "EC2/EC2 Basics.md",
-    "Study Plans/2025-01-14.md",
-    "Study Plans/2025-01-13.md",
     "EC2",
-    "Untitled.md",
-    "IAM Accounts and Organizations/Identity and Access Management (IAM).md",
     "Virtual Private Cloud",
     "IAM Accounts and Organizations",
-    "Serverless and Application Services/AWS Kinesis.md",
-    "Serverless and Application Services/AWS Glue.md",
-    "Practice Exams/Udemy Practice Exam 2.md",
-    "Serverless and Application Services/AWS Cognito.md",
-    "Hybrid Environments and Migration/AWS DataSync.md",
-    "Serverless and Application Services",
-    "Practice Exams/Udemy Practice Exam 1.md",
-    "Exam/Exam techniques.md",
-    "Exam",
-    "Security, Deployment and Operations/AWS Secrets Manager.md",
-    "Hybrid Environments and Migration/AWS Transfer Family.md",
-    "Security, Deployment and Operations/AWS Macie.md",
-    "Security, Deployment and Operations/AWS GuardDuty.md",
-    "Security, Deployment and Operations/AWS Inspector.md",
-    "Security, Deployment and Operations/CloudHSM.md",
-    "Security, Deployment and Operations",
-    "Hybrid Environments and Migration"
+    "Serverless and Application Services"
   ]
 }

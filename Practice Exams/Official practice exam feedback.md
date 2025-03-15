@@ -1,0 +1,10 @@
+- Understand in-depth all the different DR strategies.
+	- https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/plan-for-disaster-recovery-dr.html
+	- Pilot light
+	- Active-active, active-passive
+	- Canary, blue-green deployments
+- Learn EBS key stat numbers
+- Application load balancer deregistration delay
+	- Learn how ECS scaling events work
+- RDS volumes https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#Concepts.Storage.GeneralSSD
+- Metadata URL `curl http://169.254.169.254/latest/meta-data/`
